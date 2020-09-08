@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+/*estilo*/
+.input-etapa{
+  background-color:transparent; 
+  border: 0px; 
+  padding: 0px; 
+  margin: 0px;
+  width: 100%;
+  height: 0px;
+  visibility: hidden;
+}
+ .subir{
+  margin-top: -20px;
+}
+ .alt{
+  font-size: 10px;
+}
+.input-pais{
+  background-color:transparent; 
+  border: 0px; 
+  padding: 0px; 
+  margin: 0px;
+  width: 100%;
+  height: 0px;
+  visibility: hidden;
+}
+.overflow-container{
+  width: 100%;
+  height: 600px;
+  overflow: auto;
+}
+.overflow-container::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.overflow-container::-webkit-scrollbar-thumb {
+  background: #0894d1;
+}
+
+body::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #0894d1;
+}
+.disabled {
+        pointer-events: none;
+        cursor: default;
+    }
+.input-busqueda{
+  background: silver;
+  border: 1px solid #393939;
+  border-radius: 5px 5px 5px 5px;color: #393939;
+  font-size: 12px;
+  padding: 5px;
+}
+.boton-b{
+  height: 31px;
+}
