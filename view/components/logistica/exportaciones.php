@@ -5,7 +5,7 @@ session_start();
 error_reporting(0);
 $varsesion=$_SESSION['usuario'];
 $query="SELECT u.idrol,r.rol,u.nombre_user FROM usuarios as u INNER JOIN rol as r on u.idrol=r.idrol WHERE usuario ='$varsesion'";
-require_once("../../controller/procesoexportaciones.php");
+require_once("../../controller/procesologistica.php");
 
 if (isset($_POST["ordenes_compra_siguiente"])) {
   
