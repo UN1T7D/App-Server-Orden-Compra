@@ -84,7 +84,7 @@ if($_SESSION['vsTipo']==1){
               </button>
               <hr>
               <div class="row table-responsive">
-                <table class="table table-striped">
+                <table class="table table-striped"  id="datatable">
                   <thead>
                     <tr>
                       <th>Nombre</th>
@@ -288,7 +288,11 @@ if($_SESSION['vsTipo']==1){
     </div>
   </div>
 </div>
-
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#datatable').DataTable();
+  } );
+</script>
 
 <!-- <script>
   $('#confirm-delete').on('show.bs.modal', function(e) {

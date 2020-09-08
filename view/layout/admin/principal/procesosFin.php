@@ -19,7 +19,7 @@
                     <b>Etapa<br></b>
                     <label id="etapa"><?php echo $mostrar2['netapas'] ?></label><br>
                     <input type="hidden" class="input-etapa" name="etapa" readonly value="<?php echo $mostrar2['idetapa'] ?>"><br>
-                     <input type="hidden" class="input-netapa" name="netapa" readonly value="<?php echo $mostrar2['netapa'] ?>"><br>
+                    <input type="hidden" class="input-netapa" name="netapa" readonly value="<?php echo $mostrar2['netapa'] ?>"><br>
                   </div>
                 </div>
                 <div class="subir row">
@@ -34,46 +34,66 @@
                 </div>
                 <!-- ESTO AGREGUE PARA LA VALIDACION DE DATOS, SI LA ORDEN ESTA COMPLETA -->
 
-                <div class="row">
+                <!-- <div class="row">
                   <div class="col-md-6 mt-3">
-                    <input type="text" class="form-group" name="idetapa" value="<?php echo $mostrar2["idetapa"] ?>" placeholder="<?php echo $mostrar2["idetapa"] ?>">
+                    <input type="text" class="form-group" name="idetapa" value="<?php /* echo $mostrar2["idetapa"] */ ?>" placeholder="<?php /* echo $mostrar2["idetapa"] */ ?>">
                   </div>
-                </div>
-                 <?php
-                        if ($mostrar2["idetapa"] == 7) {
+                </div> -->
+                <?php
+                        if ($mostrar2["idetapa"] == 13) {
                           
                           ?>
                           <div class="row">
                             <div class="col-md-12 mb-3">
-                              <label for="">¿Está completa la orden de compras?</label>
+                              <!-- <label for="">¿Está completa la orden de compras?</label>
                                 <div class="form-check mb-1">
-                                  <input class="form-check-input" name="comprobar" type="radio" id="comprobarCompleto<?php echo $contador?>" onclick="comprobarCompleto<?php echo $contador.'()'; ?>">
+                                  <input class="form-check-input" name="comprobar" type="radio" id="comprobarCompleto<?php /*echo $ contador */?>" onclick="comprobarCompleto<?php /*echo $ contador */?>">
                                   <label class="form-check-label" for="defaultCheck1">
                                     Si, la orden de compras esta completa
                                   </label>
                                 </div>
                                 <div class="form-check">
-                                  <input class="form-check-input" name="comprobar" type="radio" id="comprobarIncompleto<?php echo $contador?>"  onclick="comprobarIncompleto<?php echo $contador.'()'; ?>">
+                                  <input class="form-check-input" name="comprobar" type="radio" id="comprobarIncompleto<?php /*echo $ contador */?>"  onclick="comprobarIncompleto<?php /*echo $ contador */?>">
                                   <label class="form-check-label" for="defaultCheck1">
                                     No, presenta algunas observaciones a fecha
                                   </label>
-                                </div>
+                                </div> -->
+
+                                  <label for="">¿Está completa la orden de compras?</label>
+                                  <div class="form-check mb-3">
+                                    <input type="radio" name="cars" class="form-check-input"  value="threeCarDiv"  />
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      Si, la orden de compras esta completa
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input type="radio" name="cars" class="form-check-input "   value="twoCarDiv"/>
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      No, presenta algunas observaciones a fecha
+                                    </label>
+                                  </div>
+                            </div>
+                          </div>
+
+                          <div class="row mt-3">
+                            <div class="col-md-12">
+                              <div id="twoCarDiv" class="desc">
+                                  <textarea id="w3review" name="compraInCompleta" class="form-control" rows="2" cols="50" placeholder="Descripcion" ></textarea>
+                              </div>
+                              <div id="threeCarDiv" class="desc">
+                                  <input type="text" name="compraCompleta" class="form-control" placeholder="Orden de compra completa" value="Orden de compra completa" readonly id="">
+                              </div>
                             </div>
                           </div>
                           
-                          <script>
-                            function comprobarCompleto<?php echo $contador.'()'; ?>() {
-                              $("#")
-                            }
-                          </script>
+                          
                           
 
-                          <div class="row">
+                          <div class="row mt-4">
                             <div class="col-md-4">
                             <?php
 
                                 if ($_SESSION['vsTipo']!=3 && $_SESSION['vsTipo']!=4) {
-                                                        
                                   ?>
                                     <button style="border: none; color: red; background-color: transparent;" title="Cancelar" type="button" data-toggle="modal" data-target="#cancelaroc<?php echo $contador; ?>">
                                       <i class="fas fa-window-close fa-2x"></i>
@@ -91,7 +111,7 @@
                                     
                                     ?>
 
-                                      <button type="submit" name="ordenes_compra_siguiente" style="border: none; color: #DBDBDB; background-color: transparent;" disabled title="Siguiente">
+                                      <button type="submit" name="ordenes_compra_siguiente" id="siguiente" style="border: none; color: #DBDBDB; background-color: transparent;" disabled title="Siguiente">
                                         <i class="fas fa-arrow-alt-circle-right fa-2x"></i>
                                       </button>
                                     <?php
@@ -127,7 +147,6 @@
                                       if ($_SESSION['vsTipo']!=4) {
                                         
                                         ?>
-
                                           <button type="submit" name="ordenes_compra_siguiente" style="border: none; color: green; background-color: transparent;" title="Siguiente">
                                             <i class="fas fa-arrow-alt-circle-right fa-2x"></i>
                                           </button>
@@ -185,3 +204,24 @@
             $contador++;
           } 
           ?>
+
+
+<script>
+  $(document).ready(function() {
+      $("div.desc").hide();
+      $("input[name$='cars']").click(function() {
+          var test = $(this).val();
+          $("div.desc").hide();
+          $("#" + test).show();
+      });
+  });
+
+  $(document).ready(function(){
+
+      $("input[name$='cars']").click(function(){
+
+        document.getElementById("siguiente").removeAttribute("disabled"); 
+        $("#siguiente").css("color","green");
+      });
+  });
+</script>
