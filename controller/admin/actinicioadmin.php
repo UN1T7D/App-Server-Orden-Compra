@@ -9,7 +9,7 @@ $prepare = $conexion->prepare($consulta);
 $prepare->bind_param("i",$idpais);
 $prepare->execute();
 $resultPrepare = $prepare->get_result();
-$contador = 0;
+$contador = 1;
 while ($rowprepare = mysqli_fetch_array($resultPrepare)) {
 	
 	if ($contador > 2) {
