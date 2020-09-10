@@ -19,7 +19,8 @@
                     <b>Etapa<br></b>
                     <label id="etapa"><?php echo $mostrar2['netapas'] ?></label><br>
                     <input type="hidden" class="input-etapa" name="etapa" readonly value="<?php echo $mostrar2['idetapa'] ?>"><br>
-                    <input type="hidden" class="input-netapa" name="netapa" readonly value="<?php echo $mostrar2['netapa'] ?>"><br>
+                    <input type="hidden" class="input-netapa" name="etapan" readonly value="<?php echo $mostrar2['netapas'] ?>"><br>
+                    <input type="hidden" class="input-cliente" name="cliente" readonly value="<?php echo $mostrar2['ncliente'] ?>"><br>
                   </div>
                 </div>
                 <div class="subir row">
@@ -40,7 +41,7 @@
                   </div>
                 </div> -->
                 <?php
-                        if ($mostrar2["idetapa"] == 13) {
+                        if ($mostrar2["idetapa"] == 6) {
                           
                           ?>
                           <div class="row">

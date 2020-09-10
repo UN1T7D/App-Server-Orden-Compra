@@ -48,7 +48,7 @@ if($_SESSION['vsTipo']==1 || $_SESSION['vsTipo']==4){
 
 <!--Fin barra de navegacion-->
 
-<section class="mt-5">
+<section>
   <div class="contenedor-dashboard">
 
       <div class="row">

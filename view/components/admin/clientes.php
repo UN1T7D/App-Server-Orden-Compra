@@ -102,7 +102,7 @@ if($varsesion == null || $varsesion==''){
                                 <div class="row">
                                   <div class="col-md-12 m-auto">
                                   
-                                    <label for="" class="text-center display-4">Estas seguro de eliminar el cli</label><br>
+                                    <label for="" class="text-center display-6">Estas seguro de eliminar el cliente?</label><br>
                                   </div>
                                 </div>
                                 <input type="hidden" name="id" value="<?php echo $row['nit']; ?>" placeholder="<?php echo $row['nit']; ?>" >

@@ -17,7 +17,7 @@
 
 </div>
 <div class="card" id="menu-dashboard">
-    <a href="../components/workspace.php?funcion=etapasfinalizadasexpo">
+    <a href="../components/workspace.php?funcion=finalizadasexpo">
     <img src="../../view/assets/img/consulta.jpg" class="center">
     <h4>Consultas OC</h4>
     <p>Consultar OC en cualquier estado, ver,modificar.</p>

@@ -13,7 +13,7 @@ pe.idpais=pa.idpais
 where e.netapas='EN ESPERA' 
 order by finicio ASC";
   #Consulta 2 trae todas las ordenes que no estan en espera(cuando ya estan en proceso iniciado)
-$sql2="SELECT o.oc,c.ncliente,o.finicio,o.ffin,o.estado,pa.npais,e.netapas, e.idetapa ,pe.porcentaje,o.idpais_etapa,pa.idpais
+$sql2="SELECT o.oc,c.ncliente,o.finicio,o.ffin,o.estado,pa.npais,e.netapas, e.idetapa ,pe.porcentaje,o.idpais_etapa,pa.idpais,c.ncliente
 from oc as o 
 INNER join clientes as c on 
 o.nit=c.nit 

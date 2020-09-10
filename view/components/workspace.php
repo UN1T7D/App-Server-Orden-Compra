@@ -52,7 +52,72 @@
     <body background="../assets/img/f3.png" style="background-size: cover;">
     <!--Inicio barra de navegacion-->
     <!--Inicio barra de navegacion-->
-    <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+        <a class="navbar-brand ml-5" href="#">
+        <img src="../assets/img/logo.png" width="230" height="90" class="d-inline-block align-top" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="dashboard.php">KANBANFLOW EXPORTACIONES <span class="sr-only">(current)</span></a>
+            </li>
+            <?php
+                if ($_SESSION['vsTipo'] == 1) {
+                    ?>
+                            <li class="nav-item"><a class='nav-link text-white' href='dashboard.php'><i class='fas fa-home fa-lg'></i></a></li>
+                            <li class="nav-item"><a class='nav-link text-white' href='workspace.php?funcion=exportaciones'>Exportaciones</a></li>
+                            <li class="nav-item"><a class='nav-link text-white' href='workspace.php?funcion=usuarios'>Usuarios</a></li>
+                            <li class="nav-item"><a class='nav-link text-white' href='workspace.php?funcion=clientes'>Clientes</a></li>
+                            <li class="nav-item"><a class='nav-link text-white' href='workspace.php?funcion=finalizadas'>Consultas OC</a></li>
+                            <li class="nav-item"><a class='nav-link text-white' href='workspace.php?funcion=consultasEtapasOC'>C etapas OC</a></li>
+            <?php
+                }elseif ($_SESSION['vsTipo'] == 2) {
+                    
+            ?>
+                            <li class="nav-item"><a class='nav-link text-white' href='dashboard.php'><i class='fas fa-home fa-lg'></i></a></li>
+                            <li class="nav-item"><a class='nav-link text-white' href='workspace.php?funcion=exportacionesexpo'>Exportaciones</a></li>
+                            <li class="nav-item"><a class='nav-link text-white' href='workspace.php?funcion=clientesexpo'>Clientes</a></li>
+                            <li class="nav-item"><a class='nav-link text-white' href='workspace.php?funcion=finalizadasexpo'>Consultas OC</a></li>
+                            <li class="nav-item"><a class='nav-link text-white' href='workspace.php?funcion=consultasEtapasOC'>C etapas OC</a></li>
+            <?php
+                }elseif ($_SESSION['vsTipo'] == 3) {
+                    
+            ?>
+                        <li class="nav-item"><a class='nav-link text-white' href='dashboard.php'><i class='fas fa-home fa-lg'></i></a></li>
+                        <li class="nav-item"><a class='nav-link text-white' href='workspace.php?funcion=exportacioneslogistica'>Exportaciones</a></li>
+                        <li class="nav-item"><a class='nav-link text-white' href='workspace.php?funcion=finalizadaslogistica'>Consultas OC</a></li>
+                        <li class="nav-item"><a class='nav-link text-white' href='workspace.php?funcion=consultasEtapasOC'>C etapas OC</a></li>
+            <?php
+                }elseif ($_SESSION['vsTipo'] == 4) {
+                    
+            ?>
+                        <li class="nav-item"><a class='nav-link text-white' href='dashboard.php'><i class='fas fa-home fa-lg'></i></a></li>
+                        <li class="nav-item"><a class='nav-link text-white' href='workspace.php?funcion=exportacionesvisitas'>Exportaciones</a></li>
+                        <li class="nav-item"><a class='nav-link text-white' href='workspace.php?funcion=finalizadasvisitas'>Consultas OC</a></li>
+                        <li class="nav-item"><a class='nav-link text-white' href='workspace.php?funcion=consultasEtapasOC'>C etapas OC</a></li>
+            <?php
+                }
+            ?>
+        </ul>
+        <div class="form-inline my-2 my-lg-0">
+        <?php 
+                while ($m=mysqli_fetch_array($r)){
+                    ?>
+                    <a class="nav-link text-white" href="../procesos/cerrar_sesion.php" data-toggle="modal" data-target="#logoutModal">
+                    <?php echo $m['nombre_user'] ?> (<?php echo $m['rol'] ?>)
+                    <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                    <?php
+                }
+                ?>
+        </div>
+        </div>
+    </nav>
+    <!-- <header>
         <div class="container-header">
         <div class="container-logo-title">
             <img src="../assets/img/logo.png" alt="">
@@ -165,8 +230,7 @@
                 }
             ?>
         </div>
-    </div>
-    </header>
+    </header> -->
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

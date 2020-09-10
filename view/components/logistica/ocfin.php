@@ -117,7 +117,7 @@ if($varsesion == null || $varsesion==''){
                             <td style="color: green;font-size:80%;"><?php echo $row['ffin']; ?></td>
                             <td style="color: green;font-size:80%;"><?php echo $row['estado']; ?></td>
                             <td style="color: green;font-size:80%;"><?php echo $row['porcentaje']; ?>%</td>
-                            <td><button class="btn btn-success" data-toggle="modal" data-target="#editar<?php echo $contador ?>" ><i class="fas fa-user-edit"></i></button></td>
+                            <td><button class="btn btn-success" data-toggle="modal" data-target="#editar<?php echo $contador ?>" ><i class="far fa-eye"></i></button></td>
                           <?php } ?>
                           <?php if ($row['estado']!='FINALIZADO' AND $row['estado']!='CANCELADO'){
                             ?>
@@ -128,7 +128,7 @@ if($varsesion == null || $varsesion==''){
                             <td style="color: blue;font-size:80%;"><?php echo $row['ffin']; ?></td>
                             <td style="color: blue;font-size:80%;"><?php echo $row['estado']; ?></td>
                             <td style="color: blue;font-size:80%;"><?php echo $row['porcentaje']; ?>%</td>
-                            <td><button class="btn btn-success" data-toggle="modal" data-target="#editar<?php echo $contador ?>" ><i class="fas fa-user-edit"></i></button></td>
+                            <td><button class="btn btn-success" data-toggle="modal" data-target="#editar<?php echo $contador ?>" ><i class="far fa-eye"></i></button></td>
                           <?php } ?>
   
                           <?php if ($row['estado']=='CANCELADO') {
@@ -140,8 +140,8 @@ if($varsesion == null || $varsesion==''){
                             <td style="color: red;font-size:80%;"><?php echo $row['ffin']; ?></td>
                             <td style="color: red;font-size:80%;"><?php echo $row['estado']; ?></td>
                             <td style="color: red;font-size:80%;"><?php echo $row['porcentaje']; ?>%</td>
-                            <td><button class="btn btn-success" data-toggle="modal" data-target="#editar<?php echo $contador ?>" ><i class="fas fa-user-edit"></i></button></td>
-                            <td><button class="btn btn-danger" data-toggle="modal" data-target="#eliminar<?php echo $contador ?>" ><i class="far fa-trash-alt"></i></button></td>
+                            <td><button class="btn btn-success" data-toggle="modal" data-target="#editar<?php echo $contador ?>" ><i class="far fa-eye"></i></button></td>
+                            <!--<td><button class="btn btn-danger" data-toggle="modal" data-target="#eliminar<?php echo $contador ?>" ><i class="far fa-trash-alt"></i></button></td>-->
                           <?php } ?>
                         </tr> 
   

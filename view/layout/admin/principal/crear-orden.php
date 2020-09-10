@@ -13,11 +13,11 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="oc">Orden de Compra</label>
-                <input type="text" class="form-control" id="oc" name="oc">
+                <input type="text" class="form-control" id="oc" name="oc" required="">
               </div>
               <div class="form-group col-md-6">
                 <label for="pais">Pais</label>
-                <input list="bp" type="text" class="form-control" id="pais" name="pais">
+                <input list="bp" type="text" class="form-control" id="pais" name="pais" required="">
                 <datalist id="bp">
                   <?php
                   $sql="SELECT idpais,npais

@@ -13,7 +13,7 @@ $query="SELECT u.idrol,r.rol,u.nombre_user FROM usuarios as u INNER JOIN rol as 
 
   //Consulta trae clientes
 $sql="SELECT oc,ncliente,netapas,f_inicio,usuario FROM log_oc
-order by idlogoc DESC";
+order by idlogoc DESC limit 14";
 
 $contador=1;
 

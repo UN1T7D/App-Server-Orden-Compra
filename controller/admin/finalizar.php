@@ -13,8 +13,8 @@
 	$idpais = $_POST['idpais'];
 
 	#INSERTAR EN LOG-OC
-	$cliente=$_POST['ncliente'];
-	$etapa=$_POST['netapas'];
+	$cliente=$_POST['cliente'];
+	$etapa=$_POST['etapan'];
 	date_default_timezone_set("America/El_Salvador");
 	$fecha =date("Y-m-d");
 	$usuario=$_SESSION['usuario'];

@@ -51,7 +51,7 @@ else {
         <div class="col-md-12 p-3">
           <div class="card">
             <div class="card-header">
-              <b><H3 class="text-center">Consultas OC</H3></b>
+              <b><H3 class="text-center">Paises</H3></b>
             </div>
             <div class="card-body">
             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalregistro">

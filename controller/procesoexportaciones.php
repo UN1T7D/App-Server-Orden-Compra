@@ -12,7 +12,7 @@ pe.idpais=pa.idpais
 where e.netapas='EN ESPERA' 
 order by finicio ASC";
   //Consulta 2 trae todas las ordenes que no estan en espera
-$sql2="SELECT o.oc,c.ncliente,o.finicio,o.ffin,o.estado,pa.npais,e.netapas ,pe.porcentaje,o.idpais_etapa,pa.idpais,e.codigo
+$sql2="SELECT o.oc,c.ncliente,o.finicio,o.ffin,o.estado,pa.npais,e.netapas, e.idetapa ,pe.porcentaje,o.idpais_etapa,pa.idpais,c.ncliente
 from oc as o 
 INNER join clientes as c on 
 o.nit=c.nit 
@@ -22,7 +22,9 @@ INNER JOIN etapas as e on
 pe.idetapa=e.idetapa 
 INNER JOIN pais as pa ON 
 pe.idpais=pa.idpais
-where (e.codigo='A' or e.codigo='B' or e.codigo='D' or e.codigo='E' or e.codigo='F' or e.codigo='H' or e.codigo='I' or e.codigo='J' or e.codigo='M' or e.codigo='N') 
+INNER join rol as r on 
+e.idrol=r.idrol
+where r.rol='EXPORTACIONES'
 and (o.visible='SI') order by oc ASC";
 
   //Consulta 3 trae todas las ordenes Etapa Finalizado
@@ -51,15 +53,19 @@ INNER JOIN pais as pa ON
 pe.idpais=pa.idpais
 where e.netapas='EN ESPERA'";
 
-$cont2="SELECT count(o.oc) as oct,o.estado,e.idetapa,e.netapas
-FROM oc as o
-inner join pais_etapa as pe
-on o.idpais_etapa=pe.idpais_etapa
-inner join etapas as e on
-pe.idetapa=e.idetapa
-inner join clientes as c on
-o.nit=c.nit
-where (e.codigo='A' or e.codigo='B' or e.codigo='D' or e.codigo='E' or e.codigo='F' or e.codigo='I' or e.codigo='J' or e.codigo='M' or e.codigo='N') 
+$cont2="SELECT count(o.oc) as oct
+from oc as o 
+INNER join clientes as c on 
+o.nit=c.nit 
+INNER JOIN pais_etapa as pe on 
+o.idpais_etapa=pe.idpais_etapa 
+INNER JOIN etapas as e on 
+pe.idetapa=e.idetapa 
+INNER JOIN pais as pa ON 
+pe.idpais=pa.idpais
+INNER join rol as r on 
+e.idrol=r.idrol
+where r.rol='EXPORTACIONES'
 and (o.visible='SI')";
 
 $cont3="SELECT count(o.oc) as oct

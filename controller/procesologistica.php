@@ -14,7 +14,7 @@ pe.idpais=pa.idpais
 where e.netapas='EN ESPERA' 
 order by finicio ASC";
   //Consulta 2 trae todas las ordenes que no estan en espera
-$sql2="SELECT o.oc,c.ncliente,o.finicio,o.ffin,o.estado,pa.npais,e.netapas ,pe.porcentaje,o.idpais_etapa,pa.idpais,e.codigo
+$sql2="SELECT o.oc,c.ncliente,o.finicio,o.ffin,o.estado,pa.npais,e.netapas, e.idetapa ,pe.porcentaje,o.idpais_etapa,pa.idpais,c.ncliente
 from oc as o 
 INNER join clientes as c on 
 o.nit=c.nit 
@@ -23,9 +23,11 @@ o.idpais_etapa=pe.idpais_etapa
 INNER JOIN etapas as e on 
 pe.idetapa=e.idetapa 
 INNER JOIN pais as pa ON 
-pe.idpais=pa.idpais 
-where (e.codigo='C' or e.codigo='G' or e.codigo='K' or e.codigo='L') and (o.visible='SI')
-order by oc ASC";
+pe.idpais=pa.idpais
+INNER join rol as r on 
+e.idrol=r.idrol
+where r.rol='LOGISTICA'
+and (o.visible='SI') order by oc ASC";
 
   //Consulta 3 trae todas las ordenes Etapa Finalizado
 $sql3="SELECT o.oc,c.ncliente,o.finicio,o.ffin,o.estado,pa.npais,e.netapas ,pe.porcentaje,o.idpais_etapa,pa.idpais,e.codigo
@@ -38,7 +40,7 @@ INNER JOIN etapas as e on
 pe.idetapa=e.idetapa 
 INNER JOIN pais as pa ON 
 pe.idpais=pa.idpais
-where o.estado='FINALIZADO' and e.idetapa='17' and o.visible='SI'
+where o.estado='FINALIZADO' and e.idetapa='2' and o.visible='SI'
 order by oc ASC";
 
 //consulta para contar las ordenes en proceso
@@ -55,14 +57,19 @@ pe.idpais=pa.idpais
 where e.netapas='EN ESPERA'";
 
 $cont2="SELECT count(o.oc) as oct
-FROM oc as o
-inner join pais_etapa as pe
-on o.idpais_etapa=pe.idpais_etapa
-inner join etapas as e on
-pe.idetapa=e.idetapa
-inner join clientes as c on
-o.nit=c.nit
-where (e.codigo='C' or e.codigo='G' or e.codigo='H' or e.codigo='K' or e.codigo='L') and (o.visible='SI')";
+from oc as o 
+INNER join clientes as c on 
+o.nit=c.nit 
+INNER JOIN pais_etapa as pe on 
+o.idpais_etapa=pe.idpais_etapa 
+INNER JOIN etapas as e on 
+pe.idetapa=e.idetapa 
+INNER JOIN pais as pa ON 
+pe.idpais=pa.idpais
+INNER join rol as r on 
+e.idrol=r.idrol
+where r.rol='LOGISTICA'
+and (o.visible='SI')";
 
 $cont3="SELECT count(o.oc) as oct
 FROM oc as o
