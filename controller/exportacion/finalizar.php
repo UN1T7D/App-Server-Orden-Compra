@@ -4,6 +4,7 @@
 
 	$completa= "Orden de compra completa";
 	$incompleta=$_POST['compraInCompleta'];
+	$nombre_etapa = $_POST["nombre_etapa"];
 	
 
 	/* require_once "../conexion/conexion.php"; */
@@ -80,42 +81,46 @@
 				$rlog=mysqli_query($conexion,$log);
 
 				/* ACTUALIZAR ESTADO DE LA ORDEN DE LA COMPRAS, SI ESTA ESTA COMPLETA O INCOMPLETA. */
-				if(!empty($incompleta)){
+				if ($nombre_etapa == "D - En Facturación") {
 					
-					$siguienteEtapa = $row3["idpais_etapa"];
-					$consulta4 = "UPDATE oc SET idpais_etapa = ?, descripcion = ? WHERE oc = ?";
-					$prepapre4 = $conexion->prepare($consulta4);
-					$prepapre4->bind_param("iss",$siguienteEtapa,$incompleta, $idOrden);
-					$prepapre4->execute();
-					$resultado4 = $prepapre4->get_result();
-					if ($prepapre4) {
-						$alertProceso = "<div class='alert bg-success text-center'>
-											Variable Incompleta".$incompleta."Se actualizo correctamente la orden de compra <a href='workspace.php?funcion=exportacionesexpo' class='text-decoration-none text-white'>¡Actualice la pagina!<br><i style='border: none; background-color: transparent;'class='fas fa-sync-alt fa-'></i></a>
-										</div>";
-					} else {
-						$alertProceso = "<div class='alert bg-danger text-center'>
-											No se pudo actualizar la orden de compra en la siguiente etapa!
-										</div>";
+					
+					if(!empty($incompleta)){
+						
+						$siguienteEtapa = $row3["idpais_etapa"];
+						$consulta4 = "UPDATE oc SET idpais_etapa = ?, descripcion = ? WHERE oc = ?";
+						$prepapre4 = $conexion->prepare($consulta4);
+						$prepapre4->bind_param("iss",$siguienteEtapa,$incompleta, $idOrden);
+						$prepapre4->execute();
+						$resultado4 = $prepapre4->get_result();
+						if ($prepapre4) {
+							$alertProceso = "<div class='alert bg-success text-center'>
+												Variable Incompleta".$incompleta."Se actualizo correctamente la orden de compra <a href='workspace.php?funcion=exportaciones' class='text-decoration-none text-white'>¡Actualice la pagina!<br><i style='border: none; background-color: transparent;'class='fas fa-sync-alt fa-'></i></a>
+											</div>";
+						} else {
+							$alertProceso = "<div class='alert bg-danger text-center'>
+												No se pudo actualizar la orden de compra en la siguiente etapa!
+											</div>";
+						}
+						
+					}elseif(!empty($completa)){
+						$siguienteEtapa = $row3["idpais_etapa"];
+						$consulta4 = "UPDATE oc SET idpais_etapa = ?, descripcion = ? WHERE oc = ?";
+						$prepapre4 = $conexion->prepare($consulta4);
+						$prepapre4->bind_param("iss",$siguienteEtapa,$completa, $idOrden);
+						$prepapre4->execute();
+						$resultado4 = $prepapre4->get_result();
+						if ($prepapre4) {
+							$alertProceso = "<div class='alert bg-success text-center'>
+												Variable completa".$completa." actualizo correctamente la orden de compra <a href='workspace.php?funcion=exportaciones' class='text-decoration-none text-white'>¡Actualice la pagina!<br><i style='border: none; background-color: transparent;'class='fas fa-sync-alt fa-'></i></a>
+											</div>";
+						} else {
+							$alertProceso = "<div class='alert bg-danger text-center'>
+												No se pudo actualizar la orden de compra en la siguiente etapa!
+											</div>";
+						}
+						
+						
 					}
-					
-				}elseif(!empty($completa)){
-					$siguienteEtapa = $row3["idpais_etapa"];
-					$consulta4 = "UPDATE oc SET idpais_etapa = ?, descripcion = ? WHERE oc = ?";
-					$prepapre4 = $conexion->prepare($consulta4);
-					$prepapre4->bind_param("iss",$siguienteEtapa,$completa, $idOrden);
-					$prepapre4->execute();
-					$resultado4 = $prepapre4->get_result();
-					if ($prepapre4) {
-						$alertProceso = "<div class='alert bg-success text-center'>
-											Variable completa".$completa." actualizo correctamente la orden de compra <a href='workspace.php?funcion=exportacionesexpo' class='text-decoration-none text-white'>¡Actualice la pagina!<br><i style='border: none; background-color: transparent;'class='fas fa-sync-alt fa-'></i></a>
-										</div>";
-					} else {
-						$alertProceso = "<div class='alert bg-danger text-center'>
-											No se pudo actualizar la orden de compra en la siguiente etapa!
-										</div>";
-					}
-					
-					
 				}
 
 				

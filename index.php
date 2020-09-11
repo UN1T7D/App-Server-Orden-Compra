@@ -69,15 +69,8 @@
 	<footer>
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-6">
-					<p>Grupo Guardado S.A de C.V</p>
-				</div>
-				<div class="col-xs-6">
-					<ul class="list-inline text-right">
-						<li><a href="#">Inicio</a></li>
-						<li><a href="#">Quienes Somos</a></li>
-						<li><a href="#">Contacto</a></li>
-					</ul>
+				<div class="col-xs-12 text-center">
+					<p>Grupo Guardado S.A de C.V, &copy; 2020 Todos los derechos reservados.</p>
 				</div>
 			</div>
 		</div>

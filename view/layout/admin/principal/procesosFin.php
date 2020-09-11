@@ -58,8 +58,8 @@
                                   <label class="form-check-label" for="defaultCheck1">
                                     No, presenta algunas observaciones a fecha
                                   </label>
-                                </div> -->
-
+                                </div>-->
+                                  <input type="text" name="nombre_etapa" class="form-control" value="<?php echo $mostrar2['netapas'] ?>" readonly id="">
                                   <label for="">¿Está completa la orden de compras?</label>
                                   <div class="form-check mb-3">
                                     <input type="radio" name="cars" class="form-check-input"  value="threeCarDiv"  />

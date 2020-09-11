@@ -13,16 +13,16 @@ $_SESSION['usuario']=$usuario;
 $pwdencriptado=md5($clave);
 
 //conectar a la bd
-$consulta="SELECT idrol FROM usuarios where usuario='$usuario' and pwd = '$pwdencriptado'";
-
-$resultado=mysqli_query($conexion, $consulta);
+    $consulta = "SELECT idrol FROM usuarios where usuario=? and pwd = ?";
+    $prepare = $conexion->prepare($consulta);
+    $prepare->bind_param("ss",$usuario,$pwdencriptado);
+    $prepare->execute();
+    $resultado = $prepare->get_result();
 
 //si encuentra datos sera 1 sino sera 0
 $fila=mysqli_num_rows($resultado);
 
 if ($fila > 0) {
-    
-   
     $row=mysqli_fetch_array($resultado); 
     $_SESSION['vsTipo']=$row['idrol'];
     if ($row['idrol'] == 1) {
@@ -36,12 +36,10 @@ if ($fila > 0) {
     }else{
         header("Location:../index.php");
     }
-   
-
 }else {
     
     $alerta = "<div class='alert bg-danger text-white'>
-                    Los campos son erroneos
+                    <i class='fas fa-exclamation-triangle fa-2x'></i> Los campos son erroneos <i class='fas fa-exclamation-triangle fa-2x'></i>
                 </div>";
 }
 

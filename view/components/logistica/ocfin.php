@@ -8,7 +8,7 @@ $varsesion=$_SESSION['usuario'];
 $query="SELECT u.idrol,r.rol,u.nombre_user FROM usuarios as u INNER JOIN rol as r on u.idrol=r.idrol WHERE usuario ='$varsesion'";
  
   //Consulta 1 trae todas los datos
-$sql="SELECT o.oc,c.ncliente,o.finicio,o.ffin,o.estado,pa.npais,e.netapas,pe.porcentaje,o.visible
+$sql="SELECT o.oc,c.ncliente,o.finicio,o.ffin,o.estado,pa.npais,e.netapas,pe.porcentaje,o.visible,o.descripcion
 from oc as o 
 INNER join clientes as c on o.nit=c.nit
 INNER JOIN pais_etapa as pe on o.idpais_etapa=pe.idpais_etapa 
@@ -20,7 +20,7 @@ if (isset($_POST['search'])) {
   $fecha1=$_POST['fecha1'];
   $fecha2=$_POST['fecha2'];
 
-  $sql="SELECT o.oc,c.ncliente,o.finicio,o.ffin,o.estado,pa.npais,e.netapas,pe.porcentaje,o.visible
+  $sql="SELECT o.oc,c.ncliente,o.finicio,o.ffin,o.estado,pa.npais,e.netapas,pe.porcentaje,o.visible,o.descripcion
 from oc as o 
 INNER join clientes as c on o.nit=c.nit
 INNER JOIN pais_etapa as pe on o.idpais_etapa=pe.idpais_etapa 
@@ -208,7 +208,14 @@ if($varsesion == null || $varsesion==''){
                                         </div>
                                       </div>   
                                     </div>
+
                                   </div>
+                                  <div class="input-group">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text">Descripcion</span>
+                                      </div>
+                                      <textarea class="form-control" aria-label="With textarea" disabled=""><?php echo $row['descripcion'] ?></textarea>
+                                    </div>
                                   <div class="modal-footer">
                                    <!-- <button type="submit" name="modificarexportacion" class="btn btn-primary">Modificar</button> -->
                                  </div>

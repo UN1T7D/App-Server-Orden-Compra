@@ -45,7 +45,7 @@ while ($rowprepare = mysqli_fetch_array($resultPrepare)) {
 			}else {
 				$alertProceso = "
 				<div class='alert bg-warning text-white text-center'>
-					Al parecer hubo un error en la inicialización del proceso de la orden de compras. Al parecer no tiene ninguna etapa para este proceso.
+					Al parecer hubo un error en la inicialización.
 				</div>";
 
 			}

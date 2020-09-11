@@ -8,7 +8,7 @@ $varsesion=$_SESSION['usuario'];
 $query="SELECT u.idrol,r.rol,u.nombre_user FROM usuarios as u INNER JOIN rol as r on u.idrol=r.idrol WHERE usuario ='$varsesion'";
  
   //Consulta 1 trae todas los datos
-$sql="SELECT o.oc,c.ncliente,o.finicio,o.ffin,o.estado,pa.npais,e.netapas,pe.porcentaje,o.visible
+$sql="SELECT o.oc,c.ncliente,o.finicio,o.ffin,o.estado,pa.npais,e.netapas,pe.porcentaje,o.visible,o.descripcion
 from oc as o 
 INNER join clientes as c on o.nit=c.nit
 INNER JOIN pais_etapa as pe on o.idpais_etapa=pe.idpais_etapa 
@@ -20,7 +20,7 @@ if (isset($_POST['search'])) {
   $fecha1=$_POST['fecha1'];
   $fecha2=$_POST['fecha2'];
 
-  $sql="SELECT o.oc,c.ncliente,o.finicio,o.ffin,o.estado,pa.npais,e.netapas,pe.porcentaje,o.visible
+  $sql="SELECT o.oc,c.ncliente,o.finicio,o.ffin,o.estado,pa.npais,e.netapas,pe.porcentaje,o.visible,o.descripcion
 from oc as o 
 INNER join clientes as c on o.nit=c.nit
 INNER JOIN pais_etapa as pe on o.idpais_etapa=pe.idpais_etapa 
@@ -89,6 +89,7 @@ if($varsesion == null || $varsesion==''){
                         <th class="text-center">Estado</th>
                         <th class="text-center">%</th>
                         <th class="text-center"></th>
+                        <th class="text-center"></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -104,6 +105,7 @@ if($varsesion == null || $varsesion==''){
                             <td style="color: green;font-size:80%;"><?php echo $row['estado']; ?></td>
                             <td style="color: green;font-size:80%;"><?php echo $row['porcentaje']; ?>%</td>
                             <td><button class="btn btn-success" data-toggle="modal" data-target="#editar<?php echo $contador ?>" ><i class="fas fa-user-edit"></i></button></td>
+                            <th></th>
                           <?php } ?>
                           <?php if ($row['estado']!='FINALIZADO' AND $row['estado']!='CANCELADO'){
                             ?>
@@ -115,6 +117,7 @@ if($varsesion == null || $varsesion==''){
                             <td style="color: blue;font-size:80%;"><?php echo $row['estado']; ?></td>
                             <td style="color: blue;font-size:80%;"><?php echo $row['porcentaje']; ?>%</td>
                             <td><button class="btn btn-success" data-toggle="modal" data-target="#editar<?php echo $contador ?>" ><i class="fas fa-user-edit"></i></button></td>
+                            <th></th>
                           <?php } ?>
   
                           <?php if ($row['estado']=='CANCELADO') {
@@ -195,6 +198,12 @@ if($varsesion == null || $varsesion==''){
                                       </div>   
                                     </div>
                                   </div>
+                                  <div class="input-group">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text">Descripcion</span>
+                                      </div>
+                                      <textarea class="form-control" aria-label="With textarea" disabled=""><?php echo $row['descripcion'] ?></textarea>
+                                    </div>
                                   <div class="modal-footer">
                                    <button type="submit" class="btn btn-primary">Modificar</button>
                                  </div>
